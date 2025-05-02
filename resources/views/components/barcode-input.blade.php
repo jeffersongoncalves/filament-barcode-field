@@ -1,4 +1,5 @@
 @php use Filament\Support\Facades\FilamentAsset; @endphp
+<style>.html5-qrcode-element{background-color: transparent !important;}</style>
 <div xmlns:x-filament="http://www.w3.org/1999/html"
      x-load-js="['https://unpkg.com/html5-qrcode']"
      x-data="{
