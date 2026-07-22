@@ -1,8 +1,10 @@
 <?php
 
 return [
-    'title' => 'Scan :label',
-    'close' => 'Close',
-    'placeholder' => 'Enter :label...',
-    'aria_label' => 'Scan Barcode',
+    'labels' => [
+        'scan' => 'Scan',
+        'close' => 'Close',
+        'barcode' => 'Barcode',
+        'placeholder' => 'Enter :label...',
+    ],
 ];

@@ -2,7 +2,6 @@
     use function Filament\Support\prepare_inherited_attributes;
 
     $fieldWrapperView = $getFieldWrapperView();
-    $datalistOptions = $getDatalistOptions();
     $extraAlpineAttributes = $getExtraAlpineAttributes();
     $extraAttributeBag = $getExtraAttributeBag();
     $hasInlineLabel = $hasInlineLabel();
@@ -13,32 +12,27 @@
     $placeholder = $getPlaceholder();
 
     $inputAttributes = $getExtraInputAttributeBag()
-            ->merge($extraAlpineAttributes, escape: false)
-            ->merge([
-                'autofocus' => $isAutofocused(),
-                'disabled' => $isDisabled,
-                'id' => $id,
-                'inputmode' => $getInputMode(),
-                'list' => $datalistOptions ? $id . '-list' : null,
-                'max' => (! $isConcealed) ? $getMaxValue() : null,
-                'maxlength' => (! $isConcealed) ? $getMaxLength() : null,
-                'min' => (! $isConcealed) ? $getMinValue() : null,
-                'minlength' => (! $isConcealed) ? $getMinLength() : null,
-                'placeholder' => filled($placeholder) ? e($placeholder) : null,
-                'readonly' => $isReadOnly(),
-                'required' => $isRequired() && (! $isConcealed),
-                'type' => "text",
-                $applyStateBindingModifiers('wire:model') => $statePath,
-            ], escape: false)
-            ->class([
-                'barcode-field-input',
-            ]);
+        ->merge($extraAlpineAttributes, escape: false)
+        ->merge([
+            'autofocus' => $isAutofocused(),
+            'disabled' => $isDisabled,
+            'id' => $id,
+            'inputmode' => $getInputMode(),
+            'placeholder' => $getPlaceholder(),
+            'readonly' => $isReadOnly(),
+            'required' => $isRequired() && (! $isConcealed),
+            'type' => 'text',
+            $applyStateBindingModifiers('wire:model') => $statePath,
+            'x-bind:type' => 'text',
+        ], escape: false)
+        ->class([
+            'fi-revealable' => $isPasswordRevealable,
+        ]);
 @endphp
 <x-dynamic-component
-    :component="$fieldWrapperView"
+    :component="$getFieldWrapperView()"
     :field="$field"
     :has-inline-label="$hasInlineLabel"
-    class="fi-fo-text-input-wrp"
 >
     <div xmlns:x-filament="http://www.w3.org/1999/html"
          x-load-js="['{{ config('filament-barcode-field.asset_js') }}']"
@@ -65,7 +59,7 @@
             $dispatch('close-modal', { id: 'barcode-scanner-modal-{{ $getName() }}' });
         },
         onScanSuccess(decodedText, decodedResult) {
-            $wire.set('{{ $getStatePath() }}', decodedText);
+            $wire.set('{{ $getId() }}', decodedText);
             this.closeScannerModal();
         },
         startCamera() {
@@ -88,12 +82,16 @@
      }"
     >
         <div class="barcode-container">
+            <x-slot name="label" @class(['sm:pt-1.5' => $hasInlineLabel])>
+                {{ $getLabel() }}
+            </x-slot>
             <x-filament::input.wrapper :disabled="$isDisabled" :valid="! $errors->has($statePath)"
                                        :attributes="prepare_inherited_attributes($extraAttributeBag)->class(['fi-fo-text-input'])">
-                <input {{ $inputAttributes->class(['fi-input']) }} />
+                <x-filament::input type="text" name="{{ $getName() }}" id="{{ $getId() }}" value="{{ $getState() }}"
+                                   placeholder="{{ $getPlaceholder() }}" class="barcode-field-input"/>
                 <x-slot name="suffix">
                     <!-- Trigger Button for Filament Modal -->
-                    <button type="button" @click="openScannerModal()" class="btn-scan-barcode" aria-label="{{ __('filament-barcode-field::barcode-field.aria_label') }}">
+                    <button type="button" @click="openScannerModal()" class="btn-scan-barcode" aria-label="{{ __('filament-barcode-field::barcode-field.labels.scan') }} {{ __('filament-barcode-field::barcode-field.labels.barcode') }}">
                         @if($getExtraAttributes()['icon'] ?? null)
                             <span class="icon-wrapper">
                                 <x-dynamic-component :component="$getExtraAttributes()['icon']" class="icon-dynamic"/>
@@ -120,7 +118,7 @@
                            width="{{ config('filament-barcode-field.modal.width') }}" :close-by-clicking-away="false">
             <x-slot name="header">
                 <h2 class="barcode-scanner-modal-title">
-                    {{ __('filament-barcode-field::barcode-field.title', ['label' => $getLabel() ?? 'Barcode']) }}
+                    {{ __('filament-barcode-field::barcode-field.labels.scan') }} {{ $getLabel() ?? __('filament-barcode-field::barcode-field.labels.barcode') }}
                 </h2>
             </x-slot>
             <div class="barcode-scanner-modal-container">
@@ -131,7 +129,7 @@
             </div>
             <x-slot name="footer">
                 <x-filament::button @click="closeScannerModal()" color="danger">
-                    {{ __('filament-barcode-field::barcode-field.close') }}
+                    {{ __('filament-barcode-field::barcode-field.labels.close') }}
                 </x-filament::button>
             </x-slot>
         </x-filament::modal>

@@ -1,8 +1,10 @@
 <?php
 
 return [
-    'title' => 'Ler :label',
-    'close' => 'Fechar',
-    'placeholder' => 'Digite :label...',
-    'aria_label' => 'Ler Código de Barras',
+    'labels' => [
+        'scan' => 'Ler',
+        'close' => 'Fechar',
+        'barcode' => 'Código de Barras',
+        'placeholder' => 'Digite :label...',
+    ],
 ];

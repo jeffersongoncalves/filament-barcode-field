@@ -6,7 +6,7 @@ A Filament form component that provides barcode scanning and input functionality
 
 @verbatim
 <code-snippet name="Install the plugin" lang="bash">
-composer require jeffersongoncalves/filament-barcode-field:"^2.0"
+composer require jeffersongoncalves/filament-barcode-field:"^1.0"
 </code-snippet>
 @endverbatim
 

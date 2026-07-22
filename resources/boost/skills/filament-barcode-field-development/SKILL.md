@@ -37,7 +37,7 @@ JeffersonGoncalves\Filament\BarcodeField
 ## Installation
 
 ```bash
-composer require jeffersongoncalves/filament-barcode-field:"^2.0"
+composer require jeffersongoncalves/filament-barcode-field:"^1.0"
 ```
 
 ### Publish Config
