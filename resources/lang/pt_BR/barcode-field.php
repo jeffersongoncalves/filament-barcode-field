@@ -1,14 +1,8 @@
 <?php
 
 return [
-    'buttons' => [
-        'scan' => 'Ler Código de Barras',
-        'close' => 'Fechar',
-    ],
-    'modal' => [
-        'title' => 'Ler :label',
-    ],
-    'fields' => [
-        'placeholder' => 'Digite :label...',
-    ],
+    'title' => 'Ler :label',
+    'close' => 'Fechar',
+    'placeholder' => 'Digite :label...',
+    'aria_label' => 'Ler Código de Barras',
 ];

@@ -93,7 +93,7 @@
                 <input {{ $inputAttributes->class(['fi-input']) }} />
                 <x-slot name="suffix">
                     <!-- Trigger Button for Filament Modal -->
-                    <button type="button" @click="openScannerModal()" class="btn-scan-barcode" aria-label="{{ __('filament-barcode-field::barcode-field.buttons.scan') }}">
+                    <button type="button" @click="openScannerModal()" class="btn-scan-barcode" aria-label="{{ __('filament-barcode-field::barcode-field.aria_label') }}">
                         @if($getExtraAttributes()['icon'] ?? null)
                             <span class="icon-wrapper">
                                 <x-dynamic-component :component="$getExtraAttributes()['icon']" class="icon-dynamic"/>
@@ -120,7 +120,7 @@
                            width="{{ config('filament-barcode-field.modal.width') }}" :close-by-clicking-away="false">
             <x-slot name="header">
                 <h2 class="barcode-scanner-modal-title">
-                    {{ __('filament-barcode-field::barcode-field.modal.title', ['label' => $getLabel() ?? 'Barcode']) }}
+                    {{ __('filament-barcode-field::barcode-field.title', ['label' => $getLabel() ?? 'Barcode']) }}
                 </h2>
             </x-slot>
             <div class="barcode-scanner-modal-container">
@@ -131,7 +131,7 @@
             </div>
             <x-slot name="footer">
                 <x-filament::button @click="closeScannerModal()" color="danger">
-                    {{ __('filament-barcode-field::barcode-field.buttons.close') }}
+                    {{ __('filament-barcode-field::barcode-field.close') }}
                 </x-filament::button>
             </x-slot>
         </x-filament::modal>

@@ -12,7 +12,9 @@ class BarcodeInput extends TextInput
     {
         parent::setUp();
 
-        $this->placeholder(fn (BarcodeInput $component): string => __('filament-barcode-field::barcode-field.fields.placeholder', ['label' => strtolower($component->getLabel())]));
+        $this->placeholder(fn (BarcodeInput $component): string => __('filament-barcode-field::barcode-field.placeholder', [
+            'label' => strtolower($component->getLabel()),
+        ]));
     }
 
     public function icon(string $icon): static

@@ -1,17 +1,17 @@
 <div class="filament-hidden">
 
-![Filament Barcode Field](https://raw.githubusercontent.com/jeffersongoncalves/filament-barcode-field/3.x/art/jeffersongoncalves-filament-barcode-field.png)
+![Filament Barcode Field](https://raw.githubusercontent.com/jeffersongoncalves/filament-barcode-field/2.x/art/jeffersongoncalves-filament-barcode-field.png)
 
 </div>
 
 # Filament Barcode Field
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffersongoncalves/filament-barcode-field.svg?style=flat-square)](https://packagist.org/packages/jeffersongoncalves/filament-barcode-field)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-barcode-field/fix-php-code-style-issues.yml?branch=3.x&label=code%20style&style=flat-square)](https://github.com/jeffersongoncalves/filament-barcode-field/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3A3.x)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-barcode-field/fix-php-code-style-issues.yml?branch=2.x&label=code%20style&style=flat-square)](https://github.com/jeffersongoncalves/filament-barcode-field/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3A2.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/jeffersongoncalves/filament-barcode-field.svg?style=flat-square)](https://packagist.org/packages/jeffersongoncalves/filament-barcode-field)
 [![License](https://img.shields.io/packagist/l/jeffersongoncalves/filament-barcode-field.svg?style=flat-square)](LICENSE.md)
 
-A Laravel Filament package that provides Barcode field functionality for your web applications. This package extends Filament v5 with a simple barcode input component supporting EAN-13, EAN-8, UPC-A, UPC-E, Code 128, Code 39, ITF and Codabar.
+A Laravel Filament package that provides Barcode field functionality for your web applications. This package extends Filament v4 with a simple barcode input component supporting EAN-13, EAN-8, UPC-A, UPC-E, Code 128, Code 39, ITF and Codabar.
 
 ## Compatibility
 
@@ -24,14 +24,14 @@ A Laravel Filament package that provides Barcode field functionality for your we
 ## Requirements
 
 - PHP 8.2 or higher
-- Filament 5.0
+- Filament 4.0
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require jeffersongoncalves/filament-barcode-field:^3.0
+composer require jeffersongoncalves/filament-barcode-field:^2.0
 ```
 
 You can publish the config file with:

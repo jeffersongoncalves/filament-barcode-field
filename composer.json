@@ -1,6 +1,6 @@
 {
     "name": "jeffersongoncalves/filament-barcode-field",
-    "description": "A Laravel Filament package that provides Barcode field functionality for your web applications. This package extends Filament v5 with a simple barcode input component supporting EAN-13, EAN-8, UPC-A, UPC-E, Code 128, Code 39, ITF and Codabar.",
+    "description": "A Laravel Filament package that provides Barcode field functionality for your web applications. This package extends Filament v4 with a simple barcode input component supporting EAN-13, EAN-8, UPC-A, UPC-E, Code 128, Code 39, ITF and Codabar.",
     "keywords": [
         "jeffersongoncalves",
         "laravel",
@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^8.2|^8.3",
-        "filament/filament": "^5.3",
+        "filament/filament": "^4.8",
         "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
