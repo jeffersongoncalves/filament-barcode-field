@@ -38,3 +38,4 @@ class BarcodeFieldServiceProvider extends PackageServiceProvider
         ];
     }
 }
+
