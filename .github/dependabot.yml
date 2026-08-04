@@ -1,4 +1,5 @@
-# Basic set up for three package managers
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
 
@@ -8,7 +9,12 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+      semver-major-days: 14
+    labels:
+      - "dependencies"
     groups:
       actions-deps:
         patterns:
@@ -18,8 +24,13 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+      semver-major-days: 14
+    labels:
+      - "dependencies"
     groups:
-      actions-deps:
+      npm-deps:
         patterns:
           - "*"
