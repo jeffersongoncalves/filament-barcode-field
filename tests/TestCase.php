@@ -9,6 +9,7 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
+use Filament\PanelProvider;
 use Filament\Schemas\SchemasServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
@@ -26,14 +27,11 @@ class TestCase extends Orchestra
 
     protected function getPackageProviders($app): array
     {
-        // Filament 4+ ships the schema test helpers in the Schemas provider; Filament 3 views need @capture.
-        $versionSpecific = array_values(array_filter([
+        // Only what is installed: Schemas exists on Filament 4+, @capture on 3, and a plugin may depend on
+        // filament/actions or filament/forms alone.
+        return array_values(array_filter([
             SchemasServiceProvider::class,
             BladeCaptureDirectiveServiceProvider::class,
-        ], 'class_exists'));
-
-        return [
-            ...$versionSpecific,
             ActionsServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
@@ -46,8 +44,8 @@ class TestCase extends Orchestra
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
             BarcodeFieldServiceProvider::class,
-            TestPanelProvider::class,
-        ];
+            ...(class_exists(PanelProvider::class) ? [TestPanelProvider::class] : []),
+        ], 'class_exists'));
     }
 
     protected function defineEnvironment($app): void
